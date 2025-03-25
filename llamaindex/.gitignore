@@ -1,0 +1,6 @@
+*.key
+.env
+.venv
+storage
+data
+chromadb
