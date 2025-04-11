@@ -1,0 +1,15 @@
+bin/
+target/
+build/
+*.class
+*.jar
+*.*~
+.*~
+/.metadata/
+.env
+.venv
+site-packages/
+*.key
+.project
+.pydevproject
+.settings/
