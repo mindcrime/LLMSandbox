@@ -35,12 +35,14 @@ def main():
 
     # print( "TAVILY_API_KEY: ", tavily_api_key )
 
+    
     rate_limiter = InMemoryRateLimiter(
         requests_per_second=0.1,  # <-- Super slow! We can only make a request once every 10 seconds!!
         check_every_n_seconds=0.1,  # Wake up every 100 ms to check whether allowed to make a request,
         max_bucket_size=5 )
     
     llm = ChatOpenAI(model="gpt-4o", rate_limiter=rate_limiter )
+    
     # llm = ChatOllama(model = "gpt-oss", temperature = 0.8, base_url="http://morpheus:8080/" )
     
     sub_research_prompt = """You are a dedicated researcher. Your job is to conduct research based on the users questions.
@@ -57,8 +59,8 @@ def main():
 
     sub_critique_prompt = """You are a dedicated editor. You are being tasked to critique a report.
 
-    You can find the report at a file named `final_report.md`. You cn read it using the read_file tool.
-
+    You can find the report at a file named `final_report.md`. You can use the read_file tool to read the file.
+    
     You can find the question/topic for this report at a file named `question.txt`.
 
     The user may ask for specific areas to critique the report in. Respond to the user with a detailed critique of the report.   Things that could be improved.

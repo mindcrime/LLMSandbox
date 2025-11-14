@@ -3,6 +3,8 @@ from openai import OpenAI
 from langchain_openai import ChatOpenAI
 from typing import Literal
 from tavily import TavilyClient
+
+# HERE
 from deepagents import create_deep_agent
 from dotenv import load_dotenv
 from langchain_core.runnables import RunnableConfig
@@ -16,11 +18,11 @@ def internet_search(
         include_raw_content: bool = False ):    
     """Run a web search"""
 
+    
     tavily_client = TavilyClient(api_key=tavily_api_key)
 
     return tavily_client.search( query, max_results=max_results,
                                  include_raw_content=include_raw_content, topic=topic )
-
 
 def main():
 
@@ -48,7 +50,7 @@ def main():
     """
 
     # Create the agent
-    agent = create_deep_agent( [internet_search], research_instructions, model=llm )
+    agent = create_deep_agent( [internet_search],  research_instructions, model=llm )
 
     config = RunnableConfig(recursion_limit=100)
 
